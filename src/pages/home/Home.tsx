@@ -51,12 +51,11 @@ function Home() {
         window.location.href = "https://github.com/login/oauth/authorize?client_id=47dba79648493c77ade2&redirect_uri=https:%2F%2Fmy-github-api-project-s415.herokuapp.com%2F";
         // getOAuth().then(res => console.log(res));
     }
-
-    useEffect(() => {
+    
+    function logTrigger() {
         let code = window.location.href.match //(/\?code=(.*)/)[1];
         console.log(code);
-    },[])
-    
+    }
 
     console.log(user);
 
@@ -107,6 +106,7 @@ function Home() {
                         <div>{user?.login}</div>
                         <div>{user?.name}</div>
                         <Button onClick={login}>OAuth</Button>
+                        <Button onClick={logTrigger}>log</Button>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ss©2018 Created by Ant UED</Footer>
