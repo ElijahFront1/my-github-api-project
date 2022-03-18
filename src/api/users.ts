@@ -17,10 +17,8 @@ export const getOAuth = async () => axios.get(`https://github.com/login/oauth/au
 });
 
 export const postToken = async (code: string) => axios.post(`https://github.com/login/oauth/access_token`, {
-    params: {
-        client_id: "47dba79648493c77ade2",
-        client_secret: "e1114488035bc2831e18aea1f65db5dba1c6cf78",
-        code: code
-        // redirect_uri
-    }
+    client_id: "47dba79648493c77ade2",
+    client_secret: "e1114488035bc2831e18aea1f65db5dba1c6cf78",
+    code: code
+    // redirect_uri
 })
