@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import {
@@ -9,7 +9,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import Search from 'antd/lib/input/Search';
-import { getAuthUser, getHovercardByUsername, getUsersByUsername } from '../../api/users';
+import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth } from '../../api/users';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -48,8 +48,15 @@ function Home() {
     }
 
     function login() {
-        window.location.href = "https://github.com/login/oauth/authorize";
+        window.location.href = "https://github.com/login/oauth/authorize?client_id=47dba79648493c77ade2&redirect_uri=https:%2F%2Fmy-github-api-project-s415.herokuapp.com%2F";
+        // getOAuth().then(res => console.log(res));
     }
+
+    useEffect(() => {
+        let code = window.location.href.match //(/\?code=(.*)/)[1];
+        console.log(code);
+    },[])
+    
 
     console.log(user);
 
