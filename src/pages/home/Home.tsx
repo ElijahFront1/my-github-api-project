@@ -53,7 +53,7 @@ function Home() {
     }
     
     function logTrigger() {
-        let code = window.location.href.match //(/\?code=(.*)/)[1];
+        let code = window.location.href.match(/\?code=(.*)/)[1];
         console.log(code);
     }
 
