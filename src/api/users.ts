@@ -15,12 +15,7 @@ export const getOAuth = async () => axios.get(`https://github.com/login/oauth/au
     //     redirect_uri: "https://my-github-api-project-s415.herokuapp.com/",
     // }
 });
-
-export const postToken = async (code: string) => axios.post(`https://github.com/login/oauth/access_token`, {
-    headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization' : 'token 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',
-    },
+export const postToken = async (code: string) => await req.post(`https://github.com/login/oauth/access_token`, {
     client_id: "47dba79648493c77ade2",
     client_secret: "e1114488035bc2831e18aea1f65db5dba1c6cf78",
     code: code
