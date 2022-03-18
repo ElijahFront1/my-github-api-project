@@ -9,7 +9,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import Search from 'antd/lib/input/Search';
-import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth, postToken } from '../../api/users';
+import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth, authentication } from '../../api/users';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -59,7 +59,7 @@ function Home() {
 
     function postTokenHandler() {
         let code = window.location.href.match(/\?code=(.*)/)[1];
-        postToken(code).then(res => console.log(res));
+        authentication(code).then(res => console.log(res));
     }
 
     console.log(user);

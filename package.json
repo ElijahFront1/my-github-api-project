@@ -32,6 +32,8 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@babel/polyfill": "^7.12.1",
+    "@octokit/oauth-app": "^3.6.0",
+    "@octokit/types": "^6.34.0",
     "antd": "^4.19.2",
     "axios": "^0.26.1",
     "axios-retry": "^3.2.4",
