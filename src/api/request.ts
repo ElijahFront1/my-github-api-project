@@ -6,7 +6,7 @@ const req = () => {
         baseURL: 'https://api.github.com',
         headers: {
             'Accept': 'application/vnd.github.v3+json',
-            'Authorization' : 'Token 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',
+            'Authorization' : 'Token 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',
         },
     };
  
