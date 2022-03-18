@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -45,6 +45,10 @@ function Home() {
             getHovercardByUsername(value).then(res => console.log(res.data));
             getAuthUser();
         }
+    }
+
+    function login() {
+        window.location.href = "https://github.com/login/oauth/authorize";
     }
 
     console.log(user);
@@ -95,6 +99,7 @@ function Home() {
                         <div>{user?.following}</div>
                         <div>{user?.login}</div>
                         <div>{user?.name}</div>
+                        <Button onClick={login}>OAuth</Button>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ss©2018 Created by Ant UED</Footer>
