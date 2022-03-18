@@ -4,9 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devServer: {
-        port: 3000,
-    },
+    // devServer: {
+    //     port: 3000,
+    // },
     mode: "development",
     entry: "./src/index.tsx",
     devtool: 'source-map',
