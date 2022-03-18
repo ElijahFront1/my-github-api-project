@@ -9,7 +9,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import Search from 'antd/lib/input/Search';
-import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth } from '../../api/users';
+import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth, postToken } from '../../api/users';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -51,10 +51,15 @@ function Home() {
         window.location.href = "https://github.com/login/oauth/authorize?client_id=47dba79648493c77ade2&redirect_uri=https:%2F%2Fmy-github-api-project-s415.herokuapp.com%2F";
         // getOAuth().then(res => console.log(res));
     }
-    
+
     function logTrigger() {
         let code = window.location.href.match(/\?code=(.*)/)[1];
         console.log(code);
+    }
+
+    function postTokenHandler() {
+        let code = window.location.href.match(/\?code=(.*)/)[1];
+        postToken(code).then(res => console.log(res));
     }
 
     console.log(user);
@@ -107,6 +112,7 @@ function Home() {
                         <div>{user?.name}</div>
                         <Button onClick={login}>OAuth</Button>
                         <Button onClick={logTrigger}>log</Button>
+                        <Button onClick={postTokenHandler}>postTokenHandler</Button>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ss©2018 Created by Ant UED</Footer>
