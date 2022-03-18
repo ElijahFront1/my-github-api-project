@@ -9,7 +9,8 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import Search from 'antd/lib/input/Search';
-import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth, authentication } from '../../api/users';
+import { getAuthUser, getHovercardByUsername, getUsersByUsername, getOAuth } from '../../api/users';
+import { createOAuthAppAuth, createOAuthUserAuth } from "@octokit/auth-oauth-app";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -57,9 +58,28 @@ function Home() {
         console.log(code);
     }
 
-    function postTokenHandler() {
+    async function postTokenHandler() {
         let code = window.location.href.match(/\?code=(.*)/)[1];
-        authentication(code).then(res => console.log(res));
+        // authentication(code).then(res => console.log(res));
+
+        const appAuth = createOAuthAppAuth({
+            clientType: "github-app",
+            clientId: "47dba79648493c77ade2",
+            clientSecret: "e1114488035bc2831e18aea1f65db5dba1c6cf78",
+        });
+
+        const userAuth = await appAuth({
+            type: "oauth-user",
+            code,
+            factory: createOAuthUserAuth,
+        });
+
+        // will create token upon first call, then cache authentication for successive calls,
+        // until token needs to be refreshed (if enabled for the GitHub App)
+        const authentication = await userAuth();
+
+        console.log(authentication);
+
     }
 
     console.log(user);
